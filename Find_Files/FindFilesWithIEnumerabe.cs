@@ -28,26 +28,40 @@ namespace Find_files
         }
         public void FindFiles()
         {
-        Get_Path:
-            Console.WriteLine("Введите путь каталога:");
-            string path = Console.ReadLine();
-            if (Directory.Exists(path))
+            bool t = true;
+            while (t)
             {
-                fileList.AddRange(Directory.GetFiles(path).Where(f => f.EndsWith(".html")));
-                fileList.AddRange(FindVoid(path));
-                foreach (var item in fileList)
+                try
                 {
-                    Console.WriteLine(item);
+                    Console.WriteLine("Введите путь каталога:");
+                    string path = Console.ReadLine();
+                    if (Directory.Exists(path))
+                    {
+                        fileList.AddRange(Directory.GetFiles(path).Where(f => f.EndsWith(".html")));
+                        fileList.AddRange(FindVoid(path));
+                        foreach (var item in fileList)
+                        {
+                            Console.WriteLine(item);
+
+                        }
+                        if (fileList.Count == 0)
+                        {
+                            Console.WriteLine("Нет файлов");
+
+                        }
+                        t = false;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ошибочка");
+                        t = true;
+                    }
                 }
-                if (fileList.Count == 0)
+                catch (UnauthorizedAccessException e)
                 {
-                    Console.WriteLine("Нет файлов");
+                    Console.WriteLine(e.Message);
+                    t = true;
                 }
-            }
-            else
-            {
-                Console.WriteLine("Ошибочка");
-                goto Get_Path;
             }
         }
     }

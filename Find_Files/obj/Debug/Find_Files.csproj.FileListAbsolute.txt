@@ -3,3 +3,6 @@ D:\ucheba\Find_Files\Find_Files\bin\Debug\Find_Files.exe
 D:\ucheba\Find_Files\Find_Files\bin\Debug\Find_Files.pdb
 D:\ucheba\Find_Files\Find_Files\obj\Debug\Find_Files.exe
 D:\ucheba\Find_Files\Find_Files\obj\Debug\Find_Files.pdb
+D:\ucheba\dfs\fdsf\find_files\Find_Files\bin\Debug\Find_Files.exe.config
+D:\ucheba\dfs\fdsf\find_files\Find_Files\obj\Debug\Find_Files.exe
+D:\ucheba\dfs\fdsf\find_files\Find_Files\obj\Debug\Find_Files.pdb

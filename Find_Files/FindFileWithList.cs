@@ -27,29 +27,40 @@ namespace Find_files
 
         public void FindFiles()
         {
-        Get_Path:
-            Console.WriteLine("Введите путь каталога");
-            string path = Console.ReadLine();
-            if (Directory.Exists(path))
+            bool t = true;
+            while (t)
             {
-                RoundDirectory(path);
-                Console.WriteLine("Файлы с разрешением .html:");
-                foreach (string file in RoundDirectory(path))
+                try
                 {
-                    Console.WriteLine(file);
+                    Console.WriteLine("Введите путь каталога");
+                    string path = Console.ReadLine();
+                    if (Directory.Exists(path))
+                    {
+                        RoundDirectory(path);
+                        Console.WriteLine("Файлы с разрешением .html:");
+                        foreach (string file in RoundDirectory(path))
+                        {
+                            Console.WriteLine(file);
+                        }
+                        if (RoundDirectory(path).Count == 0)
+                        {
+                            Console.WriteLine("Нет файлов");
+                        }
+                        t = false;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ошибочка");
+                        t = true;
+                    }
                 }
-                if (RoundDirectory(path).Count == 0)
+                catch (UnauthorizedAccessException e)
                 {
-                    Console.WriteLine("Нет файлов");
+                    Console.WriteLine(e.Message);
+                    t = true;
                 }
-            }
-            else
-            {
-                Console.WriteLine("Ошибочка");
-                goto Get_Path;
             }
         }
-
     }
 }
 
