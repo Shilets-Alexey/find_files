@@ -43,8 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FindFilesWithIEnumerabe.cs" />
-    <Compile Include="FindFileWithList.cs" />
+    <Compile Include="AbstractAlgorithm.cs" />
+    <Compile Include="SecondAlgorithm.cs" />
+    <Compile Include="FirstAlgorithm.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

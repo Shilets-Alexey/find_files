@@ -1,40 +1,37 @@
 ﻿using System;
-using System.IO;
+using Find_Files;
 
 
 namespace Find_files
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            bool t = true;
-            while (t)
+            while (true)
             {
                 Console.WriteLine("Вариант c List или c IEnumerable[1/2]");
-                var a = Console.ReadLine();
+                string a = Console.ReadLine();
                 switch (a)
                 {
                     case "1":
-                        Console.WriteLine("Вы выбрали вариант с List ");
-                        FindFilesWithList file = new FindFilesWithList();
-                        file.FindFiles();
-                        Console.ReadKey();
-                        t = false;
+                        CaseMethode(new FirstAlgorithm());
                         break;
                     case "2":
-                        Console.WriteLine("Вы выбрали вариант c IEnumerable");
-                        FindFilesWithIEnumerabe files = new FindFilesWithIEnumerabe();
-                        files.FindFiles();
-                        Console.ReadKey();
+                        CaseMethode(new SecondAlgorithm());
                         break;
-                        t = false;
                     default:
                         Console.WriteLine("1 или 2");
-                        t = true;
                         break;
                 }
             }
+        }
+
+        private static void CaseMethode(AbstractAlgorithm files)
+        {
+            Console.WriteLine($"Вы выбрали вариант {files.GetType().Name}");
+            files.FindFiles();
+            Console.ReadKey();
         }
     }
 }
