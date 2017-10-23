@@ -7,7 +7,7 @@ using Find_Files;
 
 namespace Find_files
 {
-    class SecondAlgorithm : AbstractAlgorithm
+    class SecondAlgorithm : IFindFiles
     {
         public List<string> FileList { get; set; } = new List<string>();
 
@@ -18,7 +18,7 @@ namespace Find_files
             {
                 FileAttributes attr = File.GetAttributes(folderItem);
                 if ((attr & FileAttributes.Directory) != FileAttributes.Directory) continue;
-                var htmlFiles = Directory.GetFiles(folderItem, "*.html");
+                string[] htmlFiles = Directory.GetFiles(folderItem, "*.html");
                 foreach (var htmlItem in htmlFiles)
                     yield return htmlItem;
                 foreach (var subFolderItem in FindVoid(folderItem))
@@ -26,41 +26,25 @@ namespace Find_files
             }
         }
 
-        public override void FindFiles()
+
+        public IEnumerable<string> GetFilesPaths()
         {
-            while (true)
+            string path = GetPathMethods.GetPathFromConsole();
+            if (Directory.Exists(path))
             {
+                FileList.AddRange(Directory.GetFiles(path).Where(f => f.EndsWith(".html")));
                 try
                 {
-                    Console.WriteLine("Введите путь каталога:");
-                    string path = Console.ReadLine();
-                    if (Directory.Exists(path))
-                    {
-                        
-                        FileList.AddRange(Directory.GetFiles(path).Where(f => f.EndsWith(".html")));
-                        FileList.AddRange(FindVoid(path));
-                        if (FileList.Count == 0)
-                            Console.WriteLine("Нет файлов");
-                        else
-                        {
-                            Console.WriteLine($"Файлы с расширением .html:  {FileList.Count} штук");
-                            foreach (var item in FileList)
-                            {
-                                Console.WriteLine(item);
-                            }
-                        }
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Ошибочка");
-                    }
+                    FileList.AddRange(FindVoid(path));
+
                 }
                 catch (UnauthorizedAccessException e)
                 {
                     Console.WriteLine(e.Message);
                 }
+
             }
+            return FileList;
         }
     }
 }

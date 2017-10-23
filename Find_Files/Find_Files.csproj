@@ -44,10 +44,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractAlgorithm.cs" />
+    <Compile Include="GetPathMethods.cs" />
+    <Compile Include="IFindFiles.cs" />
     <Compile Include="SecondAlgorithm.cs" />
     <Compile Include="FirstAlgorithm.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShowFilesPathsMethods.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

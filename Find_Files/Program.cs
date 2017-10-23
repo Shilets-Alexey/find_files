@@ -27,10 +27,10 @@ namespace Find_files
             }
         }
 
-        private static void CaseMethode(AbstractAlgorithm files)
+        private static void CaseMethode(IFindFiles files)
         {
             Console.WriteLine($"Вы выбрали вариант {files.GetType().Name}");
-            files.FindFiles();
+            files.GetFilesPaths().PushToConsole();
             Console.ReadKey();
         }
     }
