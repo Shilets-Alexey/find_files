@@ -9,7 +9,7 @@ namespace Find_files
 {
     class SecondAlgorithm : IFindFiles
     {
-        public List<string> FileList { get; set; } = new List<string>();
+        public List<string> FileList { get; } = new List<string>();
 
         private IEnumerable<string> FindVoid(string rootDirectory)
         {
@@ -27,9 +27,8 @@ namespace Find_files
         }
 
 
-        public IEnumerable<string> GetFilesPaths()
+        public IEnumerable<string> GetFilesPaths(string path)
         {
-            string path = GetPathMethods.GetPathFromConsole();
             if (Directory.Exists(path))
             {
                 FileList.AddRange(Directory.GetFiles(path).Where(f => f.EndsWith(".html")));

@@ -32,9 +32,9 @@ namespace Find_files
             }
         }
 
-        public IEnumerable<string> GetFilesPaths()
+        public IEnumerable<string> GetFilesPaths(string path)
         {
-            GetFiles(GetPathMethods.GetPathFromConsole());
+            GetFiles(path);
             return FilesList;
         }
     }

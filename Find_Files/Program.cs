@@ -1,7 +1,6 @@
 ﻿using System;
 using Find_Files;
 
-
 namespace Find_files
 {
     class Program
@@ -30,7 +29,7 @@ namespace Find_files
         private static void CaseMethode(IFindFiles files)
         {
             Console.WriteLine($"Вы выбрали вариант {files.GetType().Name}");
-            files.GetFilesPaths().PushToConsole();
+            files.GetFilesPaths(GetPathMethods.GetPathFromConsole()).PushToConsole();
             Console.ReadKey();
         }
     }

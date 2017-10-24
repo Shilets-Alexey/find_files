@@ -43,7 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractAlgorithm.cs" />
     <Compile Include="GetPathMethods.cs" />
     <Compile Include="IFindFiles.cs" />
     <Compile Include="SecondAlgorithm.cs" />

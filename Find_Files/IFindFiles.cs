@@ -8,6 +8,6 @@ namespace Find_Files
 {
     public interface IFindFiles
     {
-        IEnumerable<string> GetFilesPaths();
+        IEnumerable<string> GetFilesPaths(string path);
     }
 }
